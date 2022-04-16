@@ -1,0 +1,56 @@
+{
+  "teams": [
+    {
+      "id": 0,
+      "host": "10.0.0.1",
+      "name": "first",
+      "token": "c2e192800a294acbb2ac7dd188502edb"
+    },
+    {
+      "id": 1,
+      "host": "10.0.0.2",
+      "name": "second",
+      "token": "934310005a1447b8bd52d9dcbd5c405a"
+    }
+  ],
+  "services": [
+    {
+      "id": 0,
+      "port": 7331,
+      "name": "example_0",
+      "checker": "volume/example/example_checker_0.py"
+    },
+    {
+      "id": 1,
+      "port": 7332,
+      "name": "example_1",
+      "checker": "volume/example/example_checker_1.py"
+    }
+  ],
+  "mongo": {
+    "hostname": "mongodb_kihon",
+    "port": 27017,
+    "db_name": "ad_kihon",
+    "user": "admin",
+    "password": "admin"
+  },
+  "flask": {
+    "port": 8080
+  },
+  "misc": {
+    "start_time": "11 apr 2022 15:30",
+    "end_time": "11 apr 2022 19:30",
+    "round_time": 120,
+    "flag_lifetime": 5,
+    "atk_weight": 10,
+    "def_weight": 10,
+    "sla_weight": 80,
+    "flag_header": "flag",
+    "flag_body_len": 30,
+    "rate_limit_seconds": 5,
+    "max_flags_per_submission": 20,
+    "scoreboard_cache_update_latency": 10,
+    "base_score": 1000,
+    "dispatch_frequency": 2
+  }
+}

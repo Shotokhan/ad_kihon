@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mongodb:
+    image : mongo
+    container_name: mongodb_kihon
+    hostname: mongodb_kihon
+    user: 1000:1000
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - ./data/db/:/data/db/
+    expose:
+      - 27017
+    restart: on-failure
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      network: host
+    container_name: ad_kihon
+    hostname: ad_kihon
+    user: 1000:1000
+    ports:
+      - 8080:8080
+    volumes:
+      - ./src/volume:/usr/src/app/src/volume
+    restart: on-failure
