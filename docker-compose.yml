@@ -8,6 +8,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+      - TZ=Europe/Rome
     volumes:
       - ./data/db/:/data/db/
     expose:
@@ -21,9 +22,11 @@ services:
       network: host
     container_name: ad_kihon
     hostname: ad_kihon
-    user: 1000:1000
+    environment:
+      - TZ=Europe/Rome
     ports:
       - 8080:8080
     volumes:
       - ./src/volume:/usr/src/app/src/volume
     restart: on-failure
+

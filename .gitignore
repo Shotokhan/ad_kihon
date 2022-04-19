@@ -1,3 +1,5 @@
 .idea/
 src/__pycache__/
-src/volume/example/__pycache__/
+src/volume/config.json
+src/volume/
+data/db/

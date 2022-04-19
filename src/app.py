@@ -22,8 +22,6 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-# TODO: integration test of Services, separated from app.py
-
 
 @app.route('/')
 def index():
@@ -34,7 +32,7 @@ def index():
 @catch_error
 def get_stats():
     teams = adServices.scoreboardCache.getStats()
-    return json_response(teams, 200)
+    return json_response(teams, status_code=200)
 
 
 @app.route('/api/flagSubmit', methods=['POST'])
@@ -64,4 +62,5 @@ def flag_submit():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    log("Starting server")
+    app.run(host='0.0.0.0', port=config['flask']['port'])
