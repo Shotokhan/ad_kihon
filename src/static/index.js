@@ -49,6 +49,10 @@ function expectedSla(roundNum, flagLifetime) {
 
 
 function getSlaPercentage(obtained, expected) {
+    if (expected == 0) {
+        perc = 0;
+        return perc.toFixed(2);
+    }
     if (obtained < 0) {
         obtained = 0;
     }

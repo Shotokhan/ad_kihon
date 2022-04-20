@@ -11,6 +11,42 @@
       "host": "10.0.0.2",
       "name": "second",
       "token": "934310005a1447b8bd52d9dcbd5c405a"
+    },
+    {
+      "id": 2,
+      "host": "10.0.0.3",
+      "name": "fruit joy",
+      "token": "63ada60f6e504c0aa1c704910d04f9f1"
+    },
+    {
+      "id": 3,
+      "host": "10.0.0.4",
+      "name": "melinda",
+      "token": "8872c2a760324f78b857c661283c6280"
+    },
+    {
+      "id": 4,
+      "host": "10.0.0.5",
+      "name": "chiquita",
+      "token": "5830a39fd0044c8babe27a10417c01c7"
+    },
+    {
+      "id": 5,
+      "host": "10.0.0.6",
+      "name": "tropical",
+      "token": "1b01426bc5884ddbbfb61d362417ed0d"
+    },
+    {
+      "id": 6,
+      "host": "10.0.0.7",
+      "name": "tenerife",
+      "token": "67d493cb19554c749ea4ee21e01ecc7d"
+    },
+    {
+      "id": 7,
+      "host": "10.0.0.8",
+      "name": "fuerteventura",
+      "token": "bde0fb7652534f6c8287ab7769a88f1c"
     }
   ],
   "services": [
@@ -25,6 +61,18 @@
       "port": 7332,
       "name": "example_1",
       "checker": "volume/example/example_checker_1.py"
+    },
+    {
+      "id": 2,
+      "port": 7333,
+      "name": "heappy notes",
+      "checker": "volume/example/example_checker_0.py"
+    },
+    {
+      "id": 3,
+      "port": 7334,
+      "name": "fruit ninja",
+      "checker": "volume/example/example_checker_1.py"
     }
   ],
   "mongo": {
@@ -38,9 +86,9 @@
     "port": 8080
   },
   "misc": {
-    "start_time": "11 apr 2022 15:30",
-    "end_time": "11 apr 2022 19:30",
-    "round_time": 120,
+    "start_time": "20 apr 2022 13:20",
+    "end_time": "20 apr 2022 13:30",
+    "round_time": 30,
     "flag_lifetime": 5,
     "atk_weight": 10,
     "def_weight": 10,
@@ -49,7 +97,7 @@
     "flag_body_len": 30,
     "rate_limit_seconds": 5,
     "max_flags_per_submission": 20,
-    "scoreboard_cache_update_latency": 10,
+    "scoreboard_cache_update_latency": 5,
     "base_score": 1000,
     "dispatch_frequency": 2
   }

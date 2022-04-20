@@ -54,7 +54,7 @@ class CheckScheduler(threading.Thread):
         return checkerPath
 
     @staticmethod
-    def runChecker(eventQueue: EventQueue, mongoConfig, mongoClient, checker, flag, seed, roundTime):
+    def runChecker(eventQueue: EventQueue, mongoConfig, mongoClient, checker, flag, seed, roundTime, isPrevious=False):
         timeSlice = roundTime // 3
         event = {"type": EVENT_CHECK, "status": "unset", "team": checker.team['id'], "service": checker.service['id']}
         db, _ = get_db_manager(mongoConfig, mongoClient)
@@ -67,15 +67,16 @@ class CheckScheduler(threading.Thread):
                 eventQueue.put(event)
                 push_check(db, checker.team['id'], checker.service['id'], res, timestamp)
                 return
-            time.sleep(random.randint(0, timeSlice))
-            res = checker.put(flag, seed)
-            if res != checker_lib.OK:
-                timestamp = int(time.time())
-                event['status'] = res
-                event['timestamp'] = timestamp
-                eventQueue.put(event)
-                push_check(db, checker.team['id'], checker.service['id'], res, timestamp)
-                return
+            if not isPrevious:
+                time.sleep(random.randint(0, timeSlice))
+                res = checker.put(flag, seed)
+                if res != checker_lib.OK:
+                    timestamp = int(time.time())
+                    event['status'] = res
+                    event['timestamp'] = timestamp
+                    eventQueue.put(event)
+                    push_check(db, checker.team['id'], checker.service['id'], res, timestamp)
+                    return
             time.sleep(random.randint(0, timeSlice))
             res = checker.get(flag, seed)
             timestamp = int(time.time())
@@ -121,7 +122,7 @@ class CheckScheduler(threading.Thread):
                         checker = self.checkers[team_id][service_id]
                         checkerThread = threading.Thread(target=CheckScheduler.runChecker,
                                                          args=(self.eventQueue, self.mongoConfig, self.mongoClient,
-                                                               checker, flag, seed, self.roundNum))
+                                                               checker, flag, seed, self.roundNum, True))
                         checkerThread.start()
                     except NotExistentDocument:
                         log(f"Error: flag for round {recentRound}, team {team_id} and service {service_id} doesn't exist")
