@@ -1,0 +1,14 @@
+.hidden {
+  opacity: 0;
+}
+.visible {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+table, th, td {
+  border: 1px solid grey;
+  text-align: center;
+}
+body {
+  background-color: aquamarine;
+}

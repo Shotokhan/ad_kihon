@@ -1,11 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/index.css" />
+    <title>ad_kihon</title>
+  </head>
+  <body class="hidden" onload="main()">
+    <header>
+        <center><p id="roundNum"></p></center>
+        <center>
+            <table>
+                <tr id="legend">
+                    <th>ok</th>
+                    <th>corrupt</th>
+                    <th>mumble</th>
+                    <th>down</th>
+                    <th>error</th>
+                </tr>
+            </table>
+        </center>
+    </header>
+    <main>
+        <center>
+            <table id="teams">
+                <tr id="teamsHeader">
+                    <th>#</th>
+                    <th>team</th>
+                    <th>IP address</th>
+                    <th>score</th>
+                </tr>
+            </table>
+        </center>
+    </main>
+    <footer>
+    </footer>
+  </body>
+  <script src="/static/index.js"></script>
 </html>
 

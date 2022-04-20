@@ -14,6 +14,7 @@ adServices = Services(config)
 
 
 def signal_handler(sig, frame):
+    # note: you will not be able to see the log with Ctrl-C, you should use docker stop
     log("Received SIGINT: stopping services after completion of pending jobs or timeout")
     adServices.stop()
     log("Goodbye")
@@ -28,11 +29,18 @@ def index():
     return send_from_directory('static', 'index.html')
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'logo.jpg', mimetype='image/jpg')
+
+
 @app.route('/api/getStats')
 @catch_error
 def get_stats():
     teams = adServices.scoreboardCache.getStats()
-    return json_response(teams, status_code=200)
+    msg = {"teams": teams, "roundNum": adServices.checkScheduler.roundNum,
+           "flagLifetime": adServices.checkScheduler.flagLifetime}
+    return json_response(msg, status_code=200)
 
 
 @app.route('/api/flagSubmit', methods=['POST'])
